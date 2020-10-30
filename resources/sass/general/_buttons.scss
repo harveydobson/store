@@ -1,0 +1,16 @@
+.btn-facebook
+{
+    background: #4267B2;
+    color: white !important;
+
+    &:before{
+        content: "\F39E";
+        font-family: "Font Awesome 5 Brands";
+        font-weight: 400;
+        padding-right: 10px;
+    }
+
+    &:hover{
+        background: lighten(#4267B2, 10%);
+    }
+}
