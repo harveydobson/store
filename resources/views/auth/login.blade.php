@@ -57,7 +57,7 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a href="{{ route('social.login', 'facebook') }}">Login with Facebook</a>
+                                <a class="btn btn-facebook" href="{{ route('social.login', 'facebook') }}">Login with Facebook</a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
