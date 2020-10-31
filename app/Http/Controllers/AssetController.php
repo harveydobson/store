@@ -18,7 +18,7 @@ class AssetController extends Controller
 
     public function image_check($purchase_reference)
     {
-        $image_file = base_path() . '/digitalassets/proof/' . $purchase_reference . '.jpg';
+        $image_file = base_path() . '/digitalassets/HIGHRES/' . $purchase_reference . '.jpg';
 
         if(file_exists($image_file))
         {
@@ -31,7 +31,7 @@ class AssetController extends Controller
 
     public function image($purchase_reference)
     {
-        $pathToFile = base_path() . '/digitalassets/proof/' . $purchase_reference . '.jpg';
+        $pathToFile = base_path() . '/digitalassets/PROOF/' . $purchase_reference . '.jpg';
 
         return response()->file($pathToFile);
     }
