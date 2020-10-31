@@ -126,17 +126,16 @@
 
     <body class="text-center">
     <div style="background:  url('https://harvo.uk/wp-content/uploads/2020/10/DSC05371-Large.jpg') center center no-repeat; background-size: cover; bottom: 0px; top: 0px; left: 0px; right: 0px; position: absolute; z-index:-1; "></div>
-    <div class="container d-flex h-100 p-3 mx-auto flex-column">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
                 <a href="{{ url('/') }}">
-                    <h3 class="masthead-brand">store@harvo.uk</h3>
+                <h3 class="masthead-brand">store@harvo.uk</h3>
                 </a>
                 @if (Route::has('login'))
                     <nav class="nav nav-masthead justify-content-center">
-                        <a href="{{ url('/') }}" class="nav-link active">Home</a>
                         @auth
-                            <a href="{{ url('/home') }}" class="nav-link">Your Account</a>
+                            <a href="{{ url('/home') }}" class="nav-link active">Home</a>
                         @else
                             <a href="{{ route('login') }}" class="nav-link">Login</a>
 
@@ -148,24 +147,19 @@
                 @endif
             </div>
         </header>
-        <div class="cover-container d-flex p-3 mx-auto flex-column">
+
         <main role="main" class="inner cover">
-            <h1 class="cover-heading">Welcome to the store</h1>
-            <p class="lead">Please enter your purchase reference code</p>
+            <h1 class="cover-heading">Search Results {{ $purchase_ref ?? '' }}</h1>
+            <p class="lead">Is this correct?</p>
             <p class="lead">
                 <form method="post" action="./asset">
                     @csrf
-                    <input class="form-control form-control-lg" name="purchase_ref" type="text" placeholder="i.e. DSC10023">
-                    @if ($status ?? '' )
-                        <div class="alert alert-danger mt-1">
-                            {{ $status }}
-                        </div>
-                    @endif
-                    <a href="#" class="btn mt-2 btn-secondary">Continue</a>
+                    <img src="{{ url("/asset/image/{$purchase_ref}") }}"><br/><br/>
+                    <a href="#" class="btn mt-2 btn-primary">Yes</a> <a href="./" class="btn mt-2 btn-secondary">No</a>
                 </form>
             </p>
         </main>
-        </div>
+
         <footer class="mastfoot mt-auto">
             <div class="inner">
                 <p>Photography Store by <a href="https://harvo.uk/">Harvey Dobson</a>.</p>

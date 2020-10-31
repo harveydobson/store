@@ -21,5 +21,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+
+Route::post('/asset', [App\Http\Controllers\AssetController::class, 'indexByPost']);
+Route::get('/asset/{purchase_ref}', [App\Http\Controllers\AssetController::class, 'indexByGet']);
+
+Route::get('/asset/image/{purchase_ref}', [App\Http\Controllers\AssetController::class, 'image']);
+
 Route::get('login/{provider}', 'App\Http\Controllers\Auth\SocialController@redirectToProvider')->name('social.login');
 Route::get('login/{provider}/callback', 'App\Http\Controllers\Auth\SocialController@handleProviderCallback');
