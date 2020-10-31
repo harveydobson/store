@@ -155,7 +155,7 @@
                 <form method="post" action="./asset">
                     @csrf
                     <img src="{{ url("/asset/image/{$purchase_ref}") }}"><br/><br/>
-                    <a href="#" class="btn mt-2 btn-primary">Yes</a> <a href="./" class="btn mt-2 btn-secondary">No</a>
+                    <a href="{{ url("/buy/{$purchase_ref}") }}" class="btn mt-2 btn-primary">Yes</a> <a href="{{ url('/') }}" class="btn mt-2 btn-secondary">No</a>
                 </form>
             </p>
         </main>

@@ -161,7 +161,7 @@
                             {{ $status }}
                         </div>
                     @endif
-                    <a href="#" class="btn mt-2 btn-secondary">Continue</a>
+                    <button type="submit" class="btn mt-2 btn-secondary">Continue</button>
                 </form>
             </p>
         </main>
