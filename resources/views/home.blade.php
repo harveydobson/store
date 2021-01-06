@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('content')
 <div class="container">
@@ -15,8 +15,8 @@
                     @endif
 
                     {{ __('Your payment information is managed securely with Stripe') }}
-
-                    <a href=" {{ Auth::user()->billingPortalUrl() }}">Manage your payment details here</a>
+                    <br/>
+                    <a href=" {{ Auth::user()->billingPortalUrl() }}" target="_blank">Manage your payment details here</a>
 
                 </div>
             </div>

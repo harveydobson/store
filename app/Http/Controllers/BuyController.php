@@ -19,12 +19,11 @@ class BuyController extends Controller
             return view('welcome')->with('status', 'Cannot find asset for that purchase reference, please try again.');
         }
 
+        $request->user()->createOrGetStripeCustomer();
 
         $stripeCharge = $request->user()->charge(
-            1, $request->paymentMethodId
+            30, $request->paymentMethodId
         );
-
-        $request->user()->createOrGetStripeCustomer();
 
         return view('buy')->with('purchase_ref', $stripeCharge);
     }
