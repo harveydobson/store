@@ -132,20 +132,29 @@
                 <a href="{{ url('/') }}">
                     <h3 class="masthead-brand">store@harvo.uk</h3>
                 </a>
-                @if (Route::has('login'))
-                    <nav class="nav nav-masthead justify-content-center">
-                        <a href="{{ url('/') }}" class="nav-link active">Home</a>
-                        @auth
-                            <a href="{{ url('/home') }}" class="nav-link">Your Account</a>
-                        @else
-                            <a href="{{ route('login') }}" class="nav-link">Login</a>
+                <!-- Authentication Links -->
+                <nav class="nav nav-masthead justify-content-center">
+                @guest
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    @if (Route::has('register'))
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                @else
+                        <a class="nav-link" href="/home" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                            My Account
+                        </a>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="nav-link">Register</a>
-                            @endif
-                        @endif
-                    </nav>
-                @endif
+                        <a class="nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                @endguest
+                </nav>
             </div>
         </header>
         <div class="cover-container d-flex p-3 mx-auto flex-column">

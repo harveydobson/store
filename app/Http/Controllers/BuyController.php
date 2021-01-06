@@ -20,10 +20,13 @@ class BuyController extends Controller
         }
 
 
-        $request->user()->createAsStripeCustomer();
+        $stripeCharge = $request->user()->charge(
+            1, $request->paymentMethodId
+        );
 
-        $url = $request->user()->billingPortalUrl();
-        return view('buy')->with('purchase_ref', $url);
+        $request->user()->createOrGetStripeCustomer();
+
+        return view('buy')->with('purchase_ref', $stripeCharge);
     }
 
 
