@@ -21,11 +21,15 @@ class BuyController extends Controller
 
         $request->user()->createOrGetStripeCustomer();
 
-        $stripeCharge = $request->user()->charge(
-            30, $request->paymentMethodId
-        );
+        if ($request->user()->hasPaymentMethod()) {
 
-        return view('buy')->with('purchase_ref', $stripeCharge);
+            $stripeCharge = $request->user()->charge(
+                30, $request->paymentMethodId
+            );
+
+            return view('buy')->with('purchase_ref', $stripeCharge);
+        }
+
     }
 
 

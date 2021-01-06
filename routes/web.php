@@ -31,6 +31,14 @@ Route::get('/asset/image/{purchase_ref}', [App\Http\Controllers\AssetController:
 Route::middleware(['auth'])->group(function () {
     Route::get('/buy/{purchase_ref}', [App\Http\Controllers\BuyController::class, 'buy']);
 
+    Route::get('/account/payment-methods', function(Request $request)
+    {
+        return view('update-payment-method', [
+            'intent' => $request->user()->createSetupIntent()
+        ]);
+    });
+
+
     Route::get('/billing-portal', function (Request $request) {
         return $request->user()->redirectToBillingPortal();
     });
